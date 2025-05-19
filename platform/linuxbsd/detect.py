@@ -420,6 +420,10 @@ def configure(env: "SConsEnvironment"):
                 print_error("Xcursor library not found. Aborting.")
                 sys.exit(255)
             env.ParseConfig("pkg-config xcursor --cflags --libs")
+            if os.system("pkg-config --exists xfixes"):
+                print_error("Xfixes library not found. Aborting.")
+                sys.exit(255)
+            env.ParseConfig("pkg-config xfixes --cflags --libs")
             if os.system("pkg-config --exists xinerama"):
                 print_error("Xinerama library not found. Aborting.")
                 sys.exit(255)
