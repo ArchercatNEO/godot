@@ -1279,6 +1279,10 @@ bool OS_LinuxBSD::_test_create_rendering_device_and_gl(const String &p_display_d
 OS_LinuxBSD::OS_LinuxBSD() {
 	main_loop = nullptr;
 
+#ifdef PIPEWIRE_ENABLED
+	AudioDriverManager::add_driver(&driver_pipewire);
+#endif
+
 #ifdef PULSEAUDIO_ENABLED
 	AudioDriverManager::add_driver(&driver_pulseaudio);
 #endif
