@@ -30,7 +30,9 @@
 		pkgs.libGL
 		#pkgs.icu
 		pkgs.mold
-		pkgs.pipewire
+		(pkgs.pipewire.overrideAttrs {
+			separateDebugInfo = true;
+		})
 		pkgs.pkg-config
 		pkgs.pulseaudio
 		pkgs.scons
